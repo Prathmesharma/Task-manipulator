@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+  
+  <nav class="navbar">
+    <div class="nav-brand">TaskFlow</div>
+    <div class="nav-user">
+      <span id="user-greeting">Hello, User</span>
+      <span id="user-role" class="badge">Role</span>
+      <button id="logout-btn" class="btn btn-secondary btn-sm">Logout</button>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <ul class="nav-links">
+        <li class="active"><a href="#" id="nav-tasks">My Tasks</a></li>
+        <li id="nav-projects-container" style="display:none;"><a href="#" id="nav-projects">Projects (Admin)</a></li>
+        <li id="nav-all-tasks-container" style="display:none;"><a href="#" id="nav-all-tasks">All Tasks (Admin)</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      
+      <!-- Tasks View -->
+      <section id="view-tasks" class="view-section active">
+        <div class="section-header">
+          <h2>Tasks</h2>
+          <button id="btn-new-task" class="btn btn-primary" style="display:none;">+ New Task</button>
+        </div>
+        <div class="board-layout">
+          <div class="column">
+            <h3>Pending</h3>
+            <div id="tasks-pending" class="task-list"></div>
+          </div>
+          <div class="column">
+            <h3>In Progress</h3>
+            <div id="tasks-in-progress" class="task-list"></div>
+          </div>
+          <div class="column">
+            <h3>Completed</h3>
+            <div id="tasks-completed" class="task-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects View (Admin) -->
+      <section id="view-projects" class="view-section hidden">
+        <div class="section-header">
+          <h2>Projects</h2>
+          <button id="btn-new-project" class="btn btn-primary">+ New Project</button>
+        </div>
+        <div id="projects-grid" class="projects-grid"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="task-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 id="task-modal-title">Create Task</h2>
+      <form id="task-form">
+        <div class="input-group">
+          <label>Title</label>
+          <input type="text" id="task-title" required>
+        </div>
+        <div class="input-group">
+          <label>Description</label>
+          <textarea id="task-desc"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Project</label>
+          <select id="task-project" required></select>
+        </div>
+        <div class="input-group">
+          <label>Assign To</label>
+          <select id="task-assignee"></select>
+        </div>
+        <div class="input-group">
+          <label>Due Date</label>
+          <input type="date" id="task-due">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Task</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="project-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Create Project</h2>
+      <form id="project-form">
+        <div class="input-group">
+          <label>Project Name</label>
+          <input type="text" id="proj-name" required>
+        </div>
+        <div class="input-group">
+          <label>Description</label>
+          <textarea id="proj-desc"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Project</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
